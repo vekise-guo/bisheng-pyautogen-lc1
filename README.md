@@ -1,34 +1,68 @@
-# bisheng-pyautogen-lc1
+# Bisheng PyAutoGen LC1
 
-`bisheng-pyautogen-lc1` 是 `bisheng-pyautogen` 的一个分支，**仅针对 LangChain v1+** 版本。
-它保留了原始的导入路径 (`import autogen`)，同时将旧的导入更新为当前的 LangChain 包布局（例如 `langchain_core.*`）。
+`bisheng-pyautogen-lc1` 是 `bisheng-pyautogen` 的一个分支版本，**专门针对 LangChain v1+ 进行适配**。
+本项目的目标是在保留原始 `import autogen` 导入路径的同时，解决与新版 LangChain 的兼容性问题（例如将 `langchain.callbacks` 更新为 `langchain_core.callbacks`）。
 
-## 关键点
+## 🌟 主要特性
 
-- **仅支持 LangChain v1**: 此分支有意**不支持**旧版本的 LangChain。
-- **导入路径不变**: 您的应用程序代码继续使用 `import autogen`。
-- **分支目的**: 进行最小化修补，以解除使用最新 LangChain 版本的项目的阻塞。
+- **LangChain v1+ 支持**: 移除了对旧版 LangChain 的依赖，全面适配 `langchain-core`。
+- **无缝迁移**: 您的应用程序代码可以继续使用 `import autogen`，无需修改业务逻辑。
+- **最小化修改**: 仅包含必要的兼容性补丁，确保与上游功能的最大的兼容性。
 
-## 安装
+## 🚀 安装
 
-### 从 GitHub 安装 (pip)
+### 通过 pip 安装 (推荐)
 
-替换 `<OWNER>` 和可选的 `<REF>` (分支/标签/提交):
-
-```bash
-pip install "git+https://github.com/<OWNER>/bisheng-pyautogen-lc1.git@main"
-```
-
-### 开发
-
-安装开发依赖:
+您可以直接从 GitHub 安装最新版本：
 
 ```bash
-pip install pytest pytest-asyncio
+pip install "git+https://github.com/vekise-guo/bisheng-pyautogen-lc1.git@master"
 ```
 
-运行测试:
+### 依赖说明
 
-```bash
-pytest tests/
-```
+本项目依赖以下核心库：
+- `openai > 1`
+- `langchain >= 1, < 2`
+- `langchain-core >= 1, < 2`
+- `diskcache`
+- `termcolor`
+- `flaml`
+- `python-dotenv`
+
+## 🛠️ 开发与测试
+
+如果您希望参与开发或运行测试，请按照以下步骤操作：
+
+1. **克隆仓库**
+   ```bash
+   git clone git@github.com:vekise-guo/bisheng-pyautogen-lc1.git
+   cd bisheng-pyautogen-lc1
+   ```
+
+2. **安装开发依赖**
+   ```bash
+   pip install pytest pytest-asyncio
+   ```
+
+3. **运行测试**
+   我们提供了完整的测试套件，涵盖了 Agent 初始化、消息传递和异步通信等核心功能。
+   ```bash
+   pytest tests/
+   ```
+
+## 📝 变更日志
+
+### v0.3.2.post1
+- 修复 `ConversableAgent` 中 `langchain.callbacks` 导入错误，迁移至 `langchain_core.callbacks`。
+- 添加 `tests/` 目录，包含 `ConversableAgent`, `AssistantAgent`, `UserProxyAgent` 的单元测试。
+- 使用 `pytest` 替代原有的测试运行方式。
+- 更新 `README.md` 为中文文档。
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+## 📄 许可证
+
+MIT License
