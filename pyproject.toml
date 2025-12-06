@@ -1,0 +1,18 @@
+[project]
+name = "bisheng-pyautogen-lc1"
+version = "0.3.2.post1"
+description = "Fork of bisheng-pyautogen; LangChain v1 only"
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+license = "MIT"
+license-files = ["LICENSE"]
+
+dependencies = [
+  "openai>1",
+  "diskcache",
+  "termcolor",
+  "flaml",
+  "python-dotenv",
+  "langchain>=1,<2",
+  "langchain-core>=1,<2",
+]
